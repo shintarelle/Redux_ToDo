@@ -1,15 +1,16 @@
 
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import './App.css';
+import ControllerTodo from './components/ControllerTodo';
+import ListTodo from './components/ListTodo';
 
 function App() {
 
-  const dispath = useDispatch();
-  const cash = useSelector(state => state.cash);
-  console.log(cash);
+
   return (
     <>
-      <p>{cash}</p>
+      <ControllerTodo />
+      <ListTodo />
     </>
   );
 }
