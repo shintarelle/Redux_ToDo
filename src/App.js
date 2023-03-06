@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React from 'react';
+import './App.css';
+import ControllerTodo from './components/ControllerTodo';
+import ListTodo from './components/ListTodo';
+import { useState } from 'react';
+
+
+export default function App() {
+  const [isSearched, setSearched] = useState(false);
+  const [searchState, setSearchState] = useState([])
+
+  const renderSearch = (searchState) => {
+    setSearched(true)
+    setSearchState(searchState)
+  }
+  const updateTodo = () => {
+    setSearched(false)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="wrapper">
+        <h1 className="todo-title">What needs to be done?</h1>
+      <ControllerTodo renderSearch={renderSearch} updateTodo={updateTodo} />
+      <ListTodo isSearched={isSearched} searchState={searchState} />
+      </div>
+    </>
   );
 }
-
-export default App;
